@@ -6,21 +6,20 @@ function getNumberFromUser() {
     arrSoNhap.push(soNhap);
     document.getElementById('kq1').innerHTML = arrSoNhap;
 }
-//---- Câu 1
 document.getElementById('btn1').onclick = getNumberFromUser;
+//---- Câu 1
 function sum() {
-    for (var i = 0; i < arrSoNhap.length; i++) {
-        tongDiem += arrSoNhap[i];
-    }
-    document.getElementById('kq2').innerHTML = tongDiem;
-    return tongDiem
+    var sum = arrSoNhap.reduce(function(total,num){
+        return total + num
+    },0)
+    document.getElementById('kq2').innerHTML ='Tổng :'+sum;
 }
 document.getElementById('btn2').onclick = sum;
 //--- Câu 2
 var soDuong 
 function demSo(){
   soDuong = arrSoNhap.length
-  document.getElementById('kq3').innerHTML=soDuong
+  document.getElementById('kq3').innerHTML='Số dương = '+soDuong
 }
 
 document.getElementById('btn3').onclick=demSo
@@ -32,7 +31,7 @@ for(var i=1;i<arrSoNhap.length;i++){
         min = arrSoNhap[i]
     }
 }
-document.getElementById('kq4').innerHTML=min
+document.getElementById('kq4').innerHTML='Số nhỏ nhất là:' +min
 }
 document.getElementById('btn4').onclick=soNhoNhat
 //Câu 4
@@ -44,7 +43,7 @@ var soDuongNhoNhat = -1
     }
     // return soDuongNhoNhat
  }
- document.getElementById('kq5').innerHTML=soDuongNhoNhat
+ document.getElementById('kq5').innerHTML='Số dương nhỏ nhất là:'+soDuongNhoNhat
 }
 document.getElementById('btn5').onclick=soDuongNho
 //----------Câu 5-------
@@ -53,8 +52,12 @@ function soChanCuoiCung(){
     for(var i=0;i<arrSoNhap.length;i++){
        if(arrSoNhap[i] % 2 == 0){
         soChanCuoi = arrSoNhap[i]
+        document.getElementById('kq6').innerHTML=`Số chẵn cuối cùng:${soChanCuoi}`
+
        }
-    document.getElementById('kq6').innerHTML=soChanCuoi
+    else(arrSoNhap[i] > 0);{
+        document.getElementById('kq6').innerHTML=`Số chẵn cuối cùng:`
+        }
  }
 }
 document.getElementById('btn6').onclick=soChanCuoiCung
@@ -65,7 +68,7 @@ function convert(){
     var trungGian = arrSoNhap[soA]
     arrSoNhap[soA]=arrSoNhap[soB]
     arrSoNhap[soB]=trungGian
-    document.getElementById('kq7').innerHTML=arrSoNhap
+    document.getElementById('kq7').innerHTML=`Mảng sau khi đổi: ${arrSoNhap}`
 }
 document.getElementById('btn7').onclick=convert
 
@@ -74,6 +77,21 @@ function tangDan(){
     var newArrSoNhap = arrSoNhap.sort(function(a,b){
         return a-b
     })
-    document.getElementById('kq8').innerHTML=newArrSoNhap
+    document.getElementById('kq8').innerHTML=`Mảng sau khi tăng là: ${newArrSoNhap}`
 }
 document.getElementById('btn8').onclick=tangDan
+//--- câu 9
+var arrNhap = [];
+function getNumberFrom() {
+  var nhapSo = document.getElementById('nhapSo1').value*1;
+//   arrNhanVien.push(nhanVien);
+  arrNhap.push(nhapSo);
+  document.getElementById('kq9').innerHTML = arrNhap;
+//   var integerCount = 0;
+//     for (var i = 0; i < arrNhap.length; i++) {
+//       if (!isNaN(arrNhap[i]) && Number.isInteger(arrNhap[i])) {
+//         integerCount++;}
+//       }
+    //   document.getElementById('kq9').innerHTML = `số nguyên trong mảng:${integerCount}`;
+}
+document.getElementById('btn9').onclick = getNumberFrom;
